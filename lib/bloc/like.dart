@@ -4,7 +4,8 @@
 import 'package:ecomproj/app_database_local.dart';
 import 'package:flutter/cupertino.dart';
 
-class LikeButton  {
+//TODO()- отметить и сохранить понравившиеся товары
+class LikeIcon  {
 
     //Database dao-Bloc
   // AppDatabaseLocal dblocal = AppDatabaseLocal();
@@ -21,13 +22,13 @@ class LikeButton  {
   // void add(Item item) {
   //   dblocal.add(item.id);
   
-  //   // notifyListeners();
+  //  
   // }
 
   // void remove(Item item) {
   //   dblocal.remove(item.id);
     
-  //   // notifyListeners();
+  //   
   // }
 
 }

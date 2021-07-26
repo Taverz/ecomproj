@@ -1,7 +1,9 @@
 
+
+
 import 'package:flutter/material.dart';
 
-class BlockBag extends ChangeNotifier {
+class BlockBag  {
 
   List<Item> _item = [];
 
@@ -12,14 +14,12 @@ class BlockBag extends ChangeNotifier {
 
   void add(Item item){
     _item.add(item);
-
-    notifyListeners();
+ 
   }
 
   void remove(Item item){
     _item.remove(item);
 
-      notifyListeners();
     }
 }
 

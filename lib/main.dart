@@ -1,20 +1,25 @@
 import 'package:ecomproj/app_config/routes.dart';
 import 'package:ecomproj/app_config/theme_app.dart';
 import 'package:ecomproj/app_database_local.dart';
+import 'package:ecomproj/bloc/bag.dart';
 import 'package:ecomproj/screen/page/splash/page_splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:path/path.dart';
 import 'package:provider/provider.dart';
 
 // ignore: implementation_imports
 import 'package:provider/src/change_notifier_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+//TODO: navigation screen button bar
+//TODO: MyApp() создать и переделать
+
 void main() {
 
 
   //  debugDefaultTargetPlatformOverride = TargetPlatform.android;
-  // WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   // neteaseRepository = NeteaseRepository();
   // api.debugPrint = debugPrint;
   // Logger.root.onRecord.listen((record) {
@@ -30,7 +35,8 @@ void main() {
                MultiProvider(
       
       providers: [
-        Provider<AppDatabaseLocal>(    //dispose: (context, db) => db.close(),
+        Provider<BlockBag>(create: (context)=> BlockBag() ),
+        Provider<AppDatabaseLocal>(   // dispose: (context, db) => db.close(),
             create: (context) => AppDatabaseLocal() ), // (_)
       ],
       child:

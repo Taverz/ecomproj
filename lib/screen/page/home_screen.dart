@@ -2,6 +2,7 @@
 
 import 'package:ecomproj/app_config/Lib_Pref.dart';
 import 'package:ecomproj/app_config/constant.dart';
+import 'package:ecomproj/data/moor_database.dart';
 import 'package:ecomproj/screen/page/animation/animation_staggred_list.dart';
 import 'package:ecomproj/screen/page/animation/animation_transition.dart';
 import 'package:ecomproj/screen/widget/carusel_vew.dart';

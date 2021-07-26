@@ -59,12 +59,27 @@ dependencies:
   ###
   # carousel_slider: ^3.0.0
   # cached_network_image: ^3.0.0
+  lint:
+
+  ##
+  equatable: ^2.0.3
+
+  ##
+  flutter_bloc: ^7.0.1
+
+  ##
+  dartz:
+  internet_connection_checker: ^0.0.1+2
 
          
 
 dev_dependencies:
+  flutter_driver:
+    sdk: flutter
   flutter_test:
     sdk: flutter
+  integration_test: ^1.0.2+3
+  test:  
 
     
 
