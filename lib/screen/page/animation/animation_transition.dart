@@ -4,10 +4,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 
-class AnimationTransition1  {
-
-
- AnimationTransition1.transitionBuilder(Widget widget, BuildContext context) {
+transitionBuilder(Widget widget, BuildContext context) {
         
         Navigator.of(context).push(
           
@@ -25,8 +22,26 @@ class AnimationTransition1  {
                             Animation<double> animation,
                             Animation<double> secondaryAnimation,
                             Widget child) {
-
+                              //TODO: Curve animation
                               var curve = CurvedAnimation(parent: animation, curve: Curves.easeInOut);
+
+                                const begin = Offset(0.0, 1.0);
+                                const end = Offset.zero;
+                                final tween = Tween(begin: begin, end: end);
+                                final offsetAnimation = animation.drive(tween);
+
+                                  final _opacityAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+                                      CurvedAnimation(
+                                        parent: animation,
+                                        curve: Interval(0.0, 1.0, curve: Curves.easeInOut),
+                                      ),
+                                    );
+
+                                    var opac = Opacity(
+                                      opacity: _opacityAnimation.value,
+                                      child: child,
+                                    );
+
 
                               // return
                               // ScaleTransition( //Transform  //SlideTransition  //ScaleTransition
@@ -35,10 +50,14 @@ class AnimationTransition1  {
                               //   alignment:Alignment.center ,
                               //   );
                                  return
-                              ScaleTransition( //Transform  //SlideTransition  //ScaleTransition
-                                scale: animation,
-                                child: child,
-                                alignment:Alignment.center ,
+                              SlideTransition(//ScaleTransition( //Transform  //SlideTransition  //ScaleTransition
+                                // scale: animation,
+                                child: Opacity(
+                                      opacity: _opacityAnimation.value,
+                                      child: child,
+                                    ),
+                                // alignment:Alignment.center, 
+                                position: offsetAnimation ,
                                 );
                           // return Align(
                           //   child: FadeTransition(
@@ -56,4 +75,3 @@ class AnimationTransition1  {
  
   
 
-}

@@ -11,52 +11,40 @@ import 'package:provider/provider.dart';
 
 void main() {
 
-  // testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-  //   // Build our app and trigger a frame.
-  //   await tester.pumpWidget(MyApp());
+  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+    // Build our app and trigger a frame.
+    //ASSEMBLE
+    await tester.pumpWidget(MyAppS());
 
-  //   // Verify that our counter starts at 0.
-  //   expect(find.text('0'), findsOneWidget);
-  //   expect(find.text('1'), findsNothing);
+    final button = find.byType(FloatingActionButton);
 
-  //   // Tap the '+' icon and trigger a frame.
-  //   await tester.tap(find.byIcon(Icons.add));
-  //   await tester.pump();
+    // // Verify that our counter starts at 0.
+    // expect(find.text('0'), findsOneWidget);
+    // expect(find.text('1'), findsNothing);
 
-  //   // Verify that our counter has incremented.
-  //   expect(find.text('0'), findsNothing);
-  //   expect(find.text('1'), findsOneWidget);
-  // });
+    // // Tap the '+' icon and trigger a frame.
+    // await tester.tap(find.byIcon(Icons.add));
+    // await tester.pump();
 
-  testWidgets("My test Widget main and Home", (WidgetTester tester) async {
+    // // Verify that our counter has incremented.
+    // expect(find.text('0'), findsNothing);
+    // expect(find.text('1'), findsOneWidget);
 
-      //ASSEMBLE
-      await tester.pumpWidget(
-        MultiProvider(
-           providers: [
-          Provider<BlockBag>(create: (context)=> BlockBag() ),
-           ],
-          child: ChangeNotifierProvider<ThemeProvider>( // <ThemeProvider>
-            create: (context) => ThemeProvider(),
-            builder: (context, _) {
-               return MaterialApp(
-                  initialRoute: getInitialRoute(),
-                  routes: routes
-                );
-            }
-          )
-        )
-      );
+ 
+    //ACT
+    await tester.tap(button);
+    await tester.pump();
 
-      final button = find.byType(FloatingActionButton);
+    //ASSERT 
+    final text = find.text("Greate");
+    expect(text, findsOneWidget);
 
-      //ACT
-      await tester.tap(button);
-      await tester.pump();
+      
 
-      //ASSERT 
-      final text = find.text("Greate");
-      expect(text, findsOneWidget);
+     
 
   });
+
+
+
 }

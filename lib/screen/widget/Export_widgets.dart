@@ -1,6 +1,6 @@
 
 
-export 'carusel_vew.dart';
+export 'carousel_slider_vew.dart';
 
 
 

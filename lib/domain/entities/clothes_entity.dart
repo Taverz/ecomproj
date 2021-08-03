@@ -10,6 +10,7 @@ class ClothesEntity extends Equatable {
   final String type;
   final String image;
   final List<String> color;
+  final List<String> size;
   final DateTime created;
 
   const ClothesEntity({
@@ -20,6 +21,7 @@ class ClothesEntity extends Equatable {
     required this.type,
     required this.image,
     required this.color,
+    required this.size,
     required this.created,
   });
 
@@ -32,6 +34,7 @@ class ClothesEntity extends Equatable {
         type,
         image,
         color,
+        size,
         created,
       ];
 }

@@ -3,7 +3,7 @@
 
 import 'package:flutter/material.dart';
 
-class BlockBag  {
+class BagCacheBlock  {
 
   List<Item> _item = [];
 
@@ -20,7 +20,7 @@ class BlockBag  {
   void remove(Item item){
     _item.remove(item);
 
-    }
+  }
 }
 
 @immutable

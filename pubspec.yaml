@@ -71,6 +71,9 @@ dependencies:
   dartz:
   internet_connection_checker: ^0.0.1+2
 
+  ##
+  carousel_slider: ^4.0.0
+
          
 
 dev_dependencies:

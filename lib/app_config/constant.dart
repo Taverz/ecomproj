@@ -44,3 +44,13 @@ Color containerColor = const Color(0xFFd92e29);
 Image splashImage = Image(image: AssetImage('assets/splash.jpg'));
 
 
+
+
+
+// Type
+const String topType = 'TOP';
+const String excploreType = 'EXPLORE';
+const String bookmarkType = 'BOOKMARK';
+const String trandType = 'TRAND'; 
+
+

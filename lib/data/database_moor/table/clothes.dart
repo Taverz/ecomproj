@@ -1,7 +1,7 @@
 
 import 'dart:convert';
 
-import 'package:ecomproj/data/seialize/database_clothes.dart';
+
 import 'package:moor_flutter/moor_flutter.dart';
 
 @DataClassName('Clothesobj')

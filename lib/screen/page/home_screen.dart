@@ -3,9 +3,9 @@
 import 'package:ecomproj/app_config/Lib_Pref.dart';
 import 'package:ecomproj/app_config/constant.dart';
 import 'package:ecomproj/data/moor_database.dart';
-import 'package:ecomproj/screen/page/animation/animation_staggred_list.dart';
+import 'package:ecomproj/screen/page/animation/animation_transition_staggred_list.dart';
 import 'package:ecomproj/screen/page/animation/animation_transition.dart';
-import 'package:ecomproj/screen/widget/carusel_vew.dart';
+import 'package:ecomproj/screen/widget/carousel_slider_vew.dart';
 import 'package:ecomproj/screen/widget/listView.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
@@ -19,6 +19,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+     
       body: Container(
         // height:   MediaQuery.of(context).size.height,
         // width:   MediaQuery.of(context).size.width,
@@ -66,7 +67,7 @@ Widget _showAll(BuildContext context){
       child: Text("Show All", style: Theme.of(context).textTheme.subtitle1 ),
     ),
     onTap: (){
-      AnimationTransition1.transitionBuilder(Container(), context);
+      transitionBuilder(Container(color:Colors.green), context);
     },
   );
 }

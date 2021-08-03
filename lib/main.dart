@@ -1,7 +1,9 @@
 import 'package:ecomproj/app_config/routes.dart';
 import 'package:ecomproj/app_config/theme_app.dart';
-import 'package:ecomproj/app_database_local.dart';
 import 'package:ecomproj/bloc/bag.dart';
+import 'package:ecomproj/bloc/database_local_bloc.dart';
+import 'package:ecomproj/bloc/product.dart';
+import 'package:ecomproj/screen/page/navigation_button.dart';
 import 'package:ecomproj/screen/page/splash/page_splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -32,19 +34,73 @@ void main() {
  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((value) =>
         runApp(
-               MultiProvider(
-      
-      providers: [
-        Provider<BlockBag>(create: (context)=> BlockBag() ),
-        Provider<AppDatabaseLocal>(   // dispose: (context, db) => db.close(),
-            create: (context) => AppDatabaseLocal() ), // (_)
-      ],
-      child:
-       ChangeNotifierProvider<ThemeProvider>(
-        create: (context) => ThemeProvider(),
-        builder: (context, _) {
+              MyAppS()
+
+      //     MultiProvider(
+      //     providers: [
+      //        Provider<BlockBag>(create: (context)=> BlockBag() ),
+      //       Provider<DatabaseLocalBloc>(   // dispose: (context, db) => db.close(),
+      //        create: (context) => DatabaseLocalBloc() ), 
+      //     ],
+      //     builder: (context, _) {
+     
+      //     final themeProvider = Provider.of<ThemeProvider>(context);
+      //     return MaterialApp(
+      //         debugShowCheckedModeBanner: false,
+      //         themeMode: themeProvider.themeMode,
+      //         theme: MyThemes.lightTheme,
+      //         darkTheme: MyThemes.darkTheme,
+      //       title: 'E-Commerce BLoC + Provider',
+      //       initialRoute: getInitialRoute(),
+      //       routes: routes,
+      //     );
+      //   }
+      // ),
+
+    )
+          
+            // MaterialApp(
+            //    debugShowCheckedModeBanner: false,
+            //   home: PageSplash(
+                      
+            //              futures: [
+            //                SharedPreferences.getInstance(),
+            //                 UserAccount.getPersistenceUser(),
+            //              ],
+            //   builder: (context) {
+            //     return 
+            //     MyApp(
+            //        user: data[1],
+            //     );
+            //   },
+              
+            //           ),
+            // )
+
+
+        );
+
+}
+
+
+class MyAppS extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return 
+    MultiProvider(
+          providers: [
+            Provider<BagCacheBlock>(create: (context)=> BagCacheBlock() ),
+            Provider<ClothesBlock>(create: (context)=> ClothesBlock(), dispose: (context, db) => db.dispose() ),
+            
+            // Provider<DatabaseLocalBloc>(   // dispose: (context, db) => db.close(),
+            //   create: (context) => DatabaseLocalBloc() ), 
+          ],
+          builder: (context, _) {
+     
           final themeProvider = Provider.of<ThemeProvider>(context);
           return MaterialApp(
+            
               debugShowCheckedModeBanner: false,
               themeMode: themeProvider.themeMode,
               theme: MyThemes.lightTheme,
@@ -52,42 +108,15 @@ void main() {
             title: 'E-Commerce BLoC + Provider',
             initialRoute: getInitialRoute(),
             routes: routes,
+            home: ButtonNavBar(),
           );
+
         }
-      ),
-    )
-          
-            // MaterialApp(
-            //    debugShowCheckedModeBanner: false,
-            //   home: PageSplash(
-                      
-            // //             futures: [
-            // //               SharedPreferences.getInstance(),
-            // // //               // UserAccount.getPersistenceUser(),
-            // // //               // getApplicationDocumentsDirectory().then((dir) {
-            // // //               //   Hive.init(dir.path);
-            // // //               //   return Hive.openBox<Map>("player");
-            // // //               // }),
-            // //             ],
-            //   builder: (context) {
-            //     return 
-            //     MyApp(
-            //       // setting: Settings(data[0]),
-            //       // user: data[1],
-               
-            //     );//;;
-            //   },
-              
-            //           ),
-            // )
+      );
 
-
-        )
- );
+  }
 
 }
-
-
 
 // void main() {
 //   runApp(MyApp());
