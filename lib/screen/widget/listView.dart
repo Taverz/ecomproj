@@ -6,6 +6,8 @@ import 'package:ecomproj/bloc/database_local_bloc.dart';
 import 'package:ecomproj/screen/widget/button_new.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:shimmer/shimmer.dart';
 
 class ListViewWidgets extends StatelessWidget{
 
@@ -15,9 +17,7 @@ class ListViewWidgets extends StatelessWidget{
 
   bool grid;
 
-  ListViewWidgets( this.grid ,
-         String typeList // Какие данные вытаскивать - это топовая одежда, это какрйто тренд, это одежда из закладок
-          );
+  ListViewWidgets( this.grid , );
 
   final _controller = ScrollController();
 
@@ -52,16 +52,37 @@ _streamList(){
     );
   }
 }
-
+  RefreshController _refreshController =
+      RefreshController(initialRefresh: false);
+      
   Widget _listView({List<dynamic>? dataSnapshot}){
-    return ListView.separated(
-            separatorBuilder: (context, index) => SizedBox(width: 8, height: 8),//Divider(),
-            physics: BouncingScrollPhysics(),
-            itemCount: dataSnapshot!.length,
-            scrollDirection: Axis.horizontal ,
-            itemBuilder: (context, item){
-                return _itemList(context, item, dataSnapshot );
-            }
+    return SingleChildScrollView(
+      physics: NeverScrollableScrollPhysics(),
+      child: Shimmer.fromColors(
+        period: Duration(milliseconds: 1200),
+        baseColor: Colors.grey[350]?? Color.fromARGB(0,0, 0, 0) ,
+        highlightColor:  Colors.grey[200] ?? Color.fromARGB(0,0, 0, 0) ,
+        child: SmartRefresher(
+              controller: _refreshController,
+              //  onRefresh: () async {
+              //   await model.refresh();
+              //   listKey.currentState.refresh(model.list.length);
+              // },
+              // onLoading: () async {
+              //   await model.loadMore();
+              //   listKey.currentState.refresh(model.list.length);
+              // },
+          child: ListView.separated(
+                  separatorBuilder: (context, index) => SizedBox(width: 8, height: 8),//Divider(),
+                  physics: BouncingScrollPhysics(),
+                  itemCount: dataSnapshot!.length,
+                  scrollDirection: Axis.horizontal ,
+                  itemBuilder: (context, item){
+                      return _itemList(context, item, dataSnapshot );
+                  }
+          ),
+        ),
+      ),
     );
   }
 
@@ -74,7 +95,7 @@ _streamList(){
                   child: Stack(children: [
                       Positioned(child: Image(image:AssetImage("assets/carousel1.jpg"))), //Image Background
                       Positioned(child: like ,) ,//Container + Icon like
-                      Positioned(child: ButtonNew(),) , //Button New
+                      Positioned(child: ButtonNow(),) , //Button New
                   ],),
                 ),
                 SizedBox(height: 7,),
@@ -99,7 +120,7 @@ _streamList(){
         builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
                 if (snapshot.hasData && snapshot.data!=null) {                  
                   return 
-                    _gridView(dataSnapshot:snapshot.data);
+                    _gridView(context, dataSnapshot:snapshot.data);
                 }
                               //this will load first
                 return CircularProgressIndicator();
@@ -109,7 +130,8 @@ _streamList(){
     }
   }
 
-   Widget _gridView({List<dynamic>? dataSnapshot}){
+   Widget _gridView(BuildContext context, {List<dynamic>? dataSnapshot}){
+         final database = Provider.of<DatabaseLocalBloc>(context);
      return GridView.builder(
             physics: BouncingScrollPhysics(),
             controller: _controller,
@@ -128,7 +150,7 @@ _streamList(){
   _typeList(String type,  DatabaseLocalBloc dat){
     switch (type) {
       case topType:
-        dat.getAllwTasks();
+        
         break;
       case excploreType:
         

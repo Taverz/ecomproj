@@ -8,7 +8,7 @@ const pageMain = Navigator.defaultRouteName;
 //                const pageLogin = 
 // "/login";
                const homePage = 
-"/";
+"/homepage";
 //                const ROUTE_SETTING = 
 // '/setting';
 //                const ROUTE_SETTING_THEME = 
@@ -32,7 +32,7 @@ String getInitialRoute() {
     // if (!login && !setting.skipWelcomePage) {
     //   return pageWelcome;
     // }
-    return pageMain;
+    return homePage;
   }
 
 

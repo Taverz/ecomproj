@@ -2,7 +2,9 @@ import 'package:ecomproj/app_config/routes.dart';
 import 'package:ecomproj/app_config/theme_app.dart';
 import 'package:ecomproj/bloc/bag.dart';
 import 'package:ecomproj/bloc/database_local_bloc.dart';
-import 'package:ecomproj/bloc/product.dart';
+import 'package:ecomproj/bloc/like.dart';
+// import 'package:ecomproj/bloc/product.dart';
+import 'package:ecomproj/screen/page/home_screen.dart';
 import 'package:ecomproj/screen/page/navigation_button.dart';
 import 'package:ecomproj/screen/page/splash/page_splash.dart';
 import 'package:flutter/material.dart';
@@ -91,14 +93,16 @@ class MyAppS extends StatelessWidget {
     MultiProvider(
           providers: [
             Provider<BagCacheBlock>(create: (context)=> BagCacheBlock() ),
-            Provider<ClothesBlock>(create: (context)=> ClothesBlock(), dispose: (context, db) => db.dispose() ),
-            
+            Provider<DatabaseLocalBloc>(create: (context)=> DatabaseLocalBloc(), 
+                  dispose: (context, db) => db.close() ),
             // Provider<DatabaseLocalBloc>(   // dispose: (context, db) => db.close(),
             //   create: (context) => DatabaseLocalBloc() ), 
+            ChangeNotifierProvider(create: (context) => ThemeProvider())
           ],
           builder: (context, _) {
      
           final themeProvider = Provider.of<ThemeProvider>(context);
+
           return MaterialApp(
             
               debugShowCheckedModeBanner: false,
@@ -106,9 +110,9 @@ class MyAppS extends StatelessWidget {
               theme: MyThemes.lightTheme,
               darkTheme: MyThemes.darkTheme,
             title: 'E-Commerce BLoC + Provider',
-            initialRoute: getInitialRoute(),
-            routes: routes,
-            home: ButtonNavBar(),
+            // initialRoute: getInitialRoute(),
+            // routes: routes,
+            home: ButtonNavBar() //ButtonNavBar(),
           );
 
         }

@@ -25,13 +25,29 @@ var textH1 = GoogleFonts.lato(
 
 // // Icon
 //AppBar
-var iconBagsNo = Image(image: AssetImage("assets/shopping_bags_no.png"));             
-var iconBags = Image(image: AssetImage("assets/shopping_bags.png")); 
+var iconBagsNo = Image(image: AssetImage("assets/icon/shopping_bags_no.png"));             
+var iconBags = Image(image: AssetImage("assets/icon/shopping_bags.png")); 
 var ixonBack = Icon(Icons.arrow_back);
 var backgroundColored = const Color(0xEDD9BF);
 
-var likeNo = Image(image: AssetImage("assets/like_no.png"));             
-var like = Image(image: AssetImage("assets/like.png"));            
+var likeNo = Image(image: AssetImage("assets/icon/like_no.png"));             
+var like = Image(image: AssetImage("assets/icon/like.png"));          
+
+var likeNavBar = Image(image: AssetImage("assets/icon/like_nav.png"));     
+var filterLine = Image(image: AssetImage("assets/icon/filter_line.png")); 
+
+// var like = ImageIcon(
+//                AssetImage("assets/icon/like.png"),
+//                     color: Color(0xFF3A5A98),
+//                );
+// var likeNo = ImageIcon(
+//                AssetImage("assets/icon/like_no.png"),
+//                     color: Color(0xFF3A5A98),
+//                );
+var iconNav3 = ImageIcon(
+               AssetImage("images/like_nav.png"),
+                    color: Color(0xFF3A5A98),
+               );                              
 
 //   CaruselViewPage
 double radius_CaruselView = 50; 

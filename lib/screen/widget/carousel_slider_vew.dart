@@ -20,7 +20,15 @@ final List<String> imgList = [
 
    List<int> lisNt = [1, 2, 3, 4, 5];
 
-class Carousel extends StatelessWidget{
+class Carousel extends StatefulWidget{
+
+  
+  @override
+  State<StatefulWidget> createState() => Car();
+
+
+}
+class Car extends State<Carousel> {
 
 final CarouselController _controller = CarouselController();
 final PageController _pageController = PageController();
@@ -82,6 +90,8 @@ final PageController _pageController = PageController();
                   );
         });
   }
+
+
 
 }
 

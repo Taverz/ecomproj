@@ -31,9 +31,11 @@ class AppLocalData implements DataInterface{
 
 
   AppDatabase db;
-  CatalogDao dao ;
+  late CatalogDao _dao ;
   SharedPreferences sharedPreferences;
-  AppLocalData({required this.db, required this.dao , required this.sharedPreferences ,});
+  AppLocalData({required this.db,  required this.sharedPreferences ,}) {
+    _dao = CatalogDao(db);
+  }
 
   @override
   Future<List<ClothesModel>> 
@@ -41,7 +43,7 @@ class AppLocalData implements DataInterface{
     
     // CatalogDao dao = db.catalogDao;
 
-    var data = await dao.getAllClothes();
+    var data = await _dao.getAllClothes();
     db.close();
      var models  = (data as List)
           .map((modle) => ClothesModel.fromJson(modle))
@@ -54,7 +56,7 @@ class AppLocalData implements DataInterface{
   
     // CatalogDao dao = db.catalogDao;
 
-    var data = dao.getAllClothes();
+    var data = _dao.getAllClothes();
     db.close();
     var models  = (data as List)
           .map((modle) => ClothesModel.fromJson(modle))
@@ -65,14 +67,14 @@ class AppLocalData implements DataInterface{
   String _CACHED_NUMBER_TRIVIA= "cahedlocal";
 
   @override
-  Future<ClothesModel> getSharedCache() async {
+  Future<List<ClothesModel>> getSharedCache() async {
     final jsonString = sharedPreferences.getStringList(_CACHED_NUMBER_TRIVIA); 
     if (jsonString != null) {
       List<ClothesModel> listM  =[];
       for ( var ver in jsonString){
        listM.add(ClothesModel.fromJson(json.decode(ver)));
       }
-      return Future.value(listM);
+      return listM;
     } else {
       throw CacheException();
     }

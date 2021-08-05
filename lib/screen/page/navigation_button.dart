@@ -3,6 +3,7 @@
 // TODO() - navigation button screen -- 4
 
 
+import 'package:ecomproj/app_config/constant.dart';
 import 'package:ecomproj/screen/page/bookmar_n/bookmark.dart';
 import 'package:ecomproj/screen/page/home_screen.dart';
 import 'package:ecomproj/screen/page/other/profile.dart';
@@ -25,16 +26,33 @@ class _ButtonNavBarState extends State<ButtonNavBar> {
 
   static const List<BottomNavigationBarItem> buttonNavItem = [
     BottomNavigationBarItem(
-      icon: Icon( Icons.ac_unit_rounded), 
+      title: Text(""),
+      icon: ImageIcon(
+        
+               AssetImage("assets/icon/like.png"),
+                    // color: Color(0xFF3A5A98),
+               ), 
     ),
     BottomNavigationBarItem(
-      icon:Icon( Icons.ac_unit_rounded), 
+        title: Text(""),
+      icon:ImageIcon(
+               AssetImage("assets/icon/like.png"),
+                    // color: Color(0xFF3A5A98),
+               ), 
     ),
     BottomNavigationBarItem(
-      icon: Icon( Icons.ac_unit_rounded), 
+        title: Text(""),
+      icon: ImageIcon(
+              AssetImage("assets/icon/like.png"),
+                    // color: Colors,
+               ), 
     ),
     BottomNavigationBarItem(
-      icon: Icon( Icons.ac_unit_rounded), 
+        title: Text(""),
+      icon: ImageIcon(
+             AssetImage("assets/icon/like.png"),
+                    // color: Color(0xFF3A5A98),
+               ), 
     ),
  ];
 
@@ -42,9 +60,10 @@ class _ButtonNavBarState extends State<ButtonNavBar> {
     //Home page
     HomePage(),
     //Buccmark page
-    BookmarkScreen(),
+    
+     TrandScreen(),
     //Trand page
-    TrandScreen(),
+   BookmarkScreen(),
     //Explore page
     Profile()
   ];
@@ -61,20 +80,26 @@ class _ButtonNavBarState extends State<ButtonNavBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white10,
-        // elevation: 0,
-        mouseCursor: SystemMouseCursors.grab, //TDOD: When running on the web, you can customize the mouse cursor when it hovers over an item on the BottomNavigationBar:
-        
-        selectedIconTheme: IconThemeData(color: Colors.amberAccent, size: 40),
-        selectedItemColor: Colors.amberAccent,
-        selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
-
-        unselectedIconTheme: IconThemeData(
-                                    color: Colors.deepOrangeAccent,
-                                  ),
-        unselectedItemColor: Colors.deepOrangeAccent,
-
-        items: buttonNavItem,
+        backgroundColor: Colors.grey.shade500,
+        elevation: 0,
+        selectedItemColor: Colors.black,  
+        unselectedIconTheme: IconThemeData(color: Colors.black,),
+        items: [
+           BottomNavigationBarItem(
+      title: Text(""),
+       icon: _selectedIndex ==0 ? Icon(Icons.home ,color: Colors.black,) :Icon(Icons.home_outlined ,color: Colors.black,) ,), 
+  
+    BottomNavigationBarItem(
+        title: Text(""),
+        icon: _selectedIndex ==1 ? Icon(Icons.star ,color: Colors.black,) :Icon(Icons.star_border ,color: Colors.black,) ,), 
+    BottomNavigationBarItem(
+        title: Text(""),
+        icon: _selectedIndex ==2 ? Icon(Icons.favorite ,color: Colors.black,) :Icon(Icons.favorite_border ,color: Colors.black,) ,), 
+    BottomNavigationBarItem(
+        title: Text(""),
+        icon: _selectedIndex ==3 ? Icon(Icons.person ,color: Colors.black,) :Icon(Icons.person_outline ,color: Colors.black,) ,), 
+    
+        ],
          onTap: (int index) {
           setState(() {
             _selectedIndex = index;

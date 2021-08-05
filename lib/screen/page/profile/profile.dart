@@ -2,10 +2,10 @@
   
   
   
-  logoutS() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString("API_Token", "");
-    setState(() {
-      build(context);
-    });
-  }
+  // logoutS() async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   await prefs.setString("API_Token", "");
+  //   setState(() {
+  //     build(context);
+  //   });
+  // }

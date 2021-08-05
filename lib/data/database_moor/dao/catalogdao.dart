@@ -1,6 +1,6 @@
 
 
-import 'package:ecomproj/data/seialize/database_clothes.dart';
+// import 'package:ecomproj/data/seialize/database_clothes.dart';
 
 import '/data/database_moor/table/clothes.dart';
 import '/data/database_moor/table/comment.dart';

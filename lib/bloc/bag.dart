@@ -12,7 +12,7 @@ class BagCacheBlock  {
   int get totalPrice =>
       items.fold(0, (total, current) => total + current.price);
 
-  void add(Item item){
+  set add(Item item){
     _item.add(item);
  
   }

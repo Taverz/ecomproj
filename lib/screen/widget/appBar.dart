@@ -26,7 +26,7 @@ class MyAppBar extends StatelessWidget {
 class MyCustomAppBar extends StatelessWidget {
    
   String title;
-  List<IconButton> listIconBut;
+  List<Widget> listIconBut;
   MaterialColor backround;
   bool transparent;
   
@@ -41,11 +41,14 @@ class MyCustomAppBar extends StatelessWidget {
       child: Row(children: [
         IconButton(alignment: Alignment.centerLeft, 
               onPressed: (){
-                
+               Navigator.pop(context);
               }, 
               icon: Icon(Icons.arrow_back)),
+              SizedBox(width: 15,),
         Container(alignment: Alignment.center,
-              child: Text(title, style: Theme.of(context).textTheme.headline4,),)
+              child: Text(title, style: Theme.of(context).textTheme.headline4,),),
+            Spacer(),
+           
       ],),
     );
   }

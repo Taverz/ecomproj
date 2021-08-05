@@ -25,7 +25,9 @@ class HomePage extends StatelessWidget {
         // width:   MediaQuery.of(context).size.width,
         decoration: BoxDecoration(color: Theme.of(context).backgroundColor ,),
         child: Column(children: [
-          Shimmer.fromColors(child: CaruselView()
+          Shimmer.fromColors(child: 
+          // CaruselView()
+          Container()
           , baseColor: shimmerBaseColor, highlightColor: shimmerHighlightColor ),
           SizedBox(height: 16 ,),
           Row(children:[

@@ -10,6 +10,8 @@ import 'package:meta/meta.dart';
 
 
 
+
+
 abstract class Repository {
   
   @override Future<Either<Failure, List<ClothesEntity>>> getConcreteNumberData(int number);
@@ -33,7 +35,7 @@ class RepositoryImpl implements Repository{
   RepositoryImpl({
     required this.remoteData,
     required this.localData,
-    required this.networkInfo
+    required this.networkInfo, 
   });
 
 
