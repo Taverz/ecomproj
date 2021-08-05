@@ -42,7 +42,8 @@ Clothes fashion app.
 
 ### Architecture
 <div>
-  <img src="Documentation/Readme_other/Screen_APPClothes/figma1.jpg" height="300" />
+  <!-- <img src="Documentation/Readme_other/Screen_APPClothes/figma1.jpg" height="300" /> -->
+  ![main_playlist](https://github.com/Taverz/ecomproj/blob/master/Documentation/readme_other/Screen_APPClothes/figma1.jpg) 
 </div>
 
 ### Screen
