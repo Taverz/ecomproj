@@ -47,6 +47,6 @@ Clothes fashion app.
 
 ### Screen
 
-| ![main_playlist](https://boyan01.github.io/quiet/main_playlist.png) | ![main_cloud](https://boyan01.github.io/quiet/main_playlist_dark.png) | ![main_cloud](https://boyan01.github.io/quiet/main_cloud.jpg) | ![artist_detail](https://boyan01.github.io/quiet/artist_detail.jpg) |
+| ![main_playlist](https://boyan01.github.io/quietwwww/main_playlist.png) | ![main_cloud](https://boyan01.github.io/quietww/main_playlist_dark.png) | ![main_cloud](https://boyan01.github.io/quietww/main_cloud.jpg) | ![artist_detail](https://boyan01.github.io/quietww/artist_detail.jpg) |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| ![playlist_detail](https://boyan01.github.io/quiet/playlist_detail.png) | ![page_comment](https://boyan01.github.io/quiet/page_comment.png) |   ![playing](https://boyan01.github.io/quiet/playing.png)    |    ![search](https://boyan01.github.io/quiet/search.jpg)     |
+| ![playlist_detail](https://boyan01.github.io/quietww/playlist_detail.png) | ![page_comment](https://boyan01.github.io/quiewwt/page_comment.png) |   ![playing](https://boyan01.github.io/quietww/playing.png)    |    ![search](https://boyan01.github.io/quietwww/search.jpg)     |
