@@ -1,16 +1,52 @@
-# ecomproj
+# Clothes / Fashion
 
-A new Flutter project.
+Clothes fashion app.
 
-## Getting Started
+### Preview
+<div>
+  <img src="image/adobe-xd.svg" height="40" />
+</div>
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## Features 
+- [x] API REST - Repository, Api, Moor, Cache
+- [x] Moor
+- [x] Carousel slide View
+- [x] Search 
+- [x] Filter
+- [x] Bookmark
+- [ ] Light / Dark Theme
+- [ ] Animation button
+- [ ] Animation page route
+- [ ] Pay (Buy clothes)
+- [x] Responsive
+- [x] Splash screen
+- [ ] Shimmer
+- [ ] List loaded repository
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Structure
+-  Clean architecture
+-  Provider
+-  Repository
+-  Interface
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Testing
+- [ ] Unit Testing (flutter_test)
+- [ ] Widget test
+- [ ] Mock test
+
+### Server
+-Flask (Python)
+
+
+
+### Architecture
+<div>
+  <img src="image/adobe-xd.svg" height="40" />
+</div>
+
+### Screen
+
+| ![main_playlist](https://boyan01.github.io/quietwwww/main_playlist.png) | ![main_cloud](https://boyan01.github.io/quietww/main_playlist_dark.png) | ![main_cloud](https://boyan01.github.io/quietww/main_cloud.jpg) | ![artist_detail](https://boyan01.github.io/quietww/artist_detail.jpg) |
+| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+| ![playlist_detail](https://boyan01.github.io/quietww/playlist_detail.png) | ![page_comment](https://boyan01.github.io/quiewwt/page_comment.png) |   ![playing](https://boyan01.github.io/quietww/playing.png)    |    ![search](https://boyan01.github.io/quietwww/search.jpg)     |
