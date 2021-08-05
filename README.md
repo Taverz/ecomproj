@@ -1,16 +1,45 @@
-# ecomproj
+# Clothes / Fashion
 
-A new Flutter project.
+Clothes fashion app.
 
-## Getting Started
+### Preview
+<div>
+  <img src="image/adobe-xd.svg" height="40" />
+</div>
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## Features 
+- API REST - Repository, Api, Moor, Cache
+- Moor
+- Carousel slide View
+- OHLC Graph 
+- Search 
+- Filter
+- Bookmark
+- Light / Dark Theme
+- Multi Language
+- Exchange Selection
+- Favorite Pair
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Structure
+- [ ] thread()
+- [x] loop()
+- [ ] ~~Array~~: Use `List`
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Testing
+- Unit Testing (flutter_test)
+- Integration Testing (integration_test)
+- Mock Data (http_mock_adapter)
+- Github Actions (iOS & Android Integration Test)
+
+
+### Architecture
+<div>
+  <img src="image/adobe-xd.svg" height="40" />
+</div>
+
+### Screen
+
+| ![main_playlist](https://boyan01.github.io/quiet/main_playlist.png) | ![main_cloud](https://boyan01.github.io/quiet/main_playlist_dark.png) | ![main_cloud](https://boyan01.github.io/quiet/main_cloud.jpg) | ![artist_detail](https://boyan01.github.io/quiet/artist_detail.jpg) |
+| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+| ![playlist_detail](https://boyan01.github.io/quiet/playlist_detail.png) | ![page_comment](https://boyan01.github.io/quiet/page_comment.png) |   ![playing](https://boyan01.github.io/quiet/playing.png)    |    ![search](https://boyan01.github.io/quiet/search.jpg)     |
