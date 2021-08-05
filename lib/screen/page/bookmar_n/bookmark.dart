@@ -6,6 +6,7 @@ import 'package:ecomproj/app_config/Lib_Pref.dart';
 import 'package:ecomproj/bloc/database_local_bloc.dart';
 import 'package:ecomproj/screen/widget/appBar.dart';
 import 'package:ecomproj/screen/widget/listView.dart';
+import 'package:ecomproj/screen/widget/list_view_loaded.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -42,7 +43,7 @@ class BookmarkScreen extends StatelessWidget {
                   ],),
                 ),
 
-
+            ListViewLoaded(),
             // _listView(context);
             // ListView.separated(
             //   itemBuilder: (context, index){

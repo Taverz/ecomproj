@@ -6,7 +6,7 @@
 import 'package:ecomproj/app_config/constant.dart';
 import 'package:ecomproj/screen/page/bookmar_n/bookmark.dart';
 import 'package:ecomproj/screen/page/home_screen.dart';
-import 'package:ecomproj/screen/page/other/profile.dart';
+import 'package:ecomproj/screen/page/profile/profile.dart';
 import 'package:ecomproj/screen/page/trand/trand_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';

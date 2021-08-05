@@ -6,6 +6,7 @@ import 'package:ecomproj/app_config/constant.dart';
 import 'package:ecomproj/screen/page/bookmar_n/bookmark.dart';
 import 'package:ecomproj/screen/page/other/bag.dart';
 import 'package:ecomproj/screen/widget/appBar.dart';
+import 'package:ecomproj/screen/widget/list_view_loaded.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -70,6 +71,7 @@ class TrandScreen extends StatelessWidget {
         ),
 
         // GridView(gridDelegate: gridDelegate)
+        ListViewLoaded(),
 
 
       ],),

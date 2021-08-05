@@ -36,6 +36,9 @@ final PageController _pageController = PageController();
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 300,
+      // width: MediaQuery.of(context).size.width,
+     
           child: Stack(
             children:[  
               Container(
@@ -43,8 +46,8 @@ final PageController _pageController = PageController();
                 height: MediaQuery.of(context).size.height ,
                 child: CarouselSlider(
                     options: CarouselOptions(
-                      aspectRatio: 2.0,
-                      enlargeCenterPage: true,
+                      // aspectRatio: 2.0,
+                      // enlargeCenterPage: true,
                       scrollDirection: Axis.horizontal,
                       autoPlay: true,
                       autoPlayInterval: Duration(seconds: 5),
@@ -104,23 +107,59 @@ class CarouselView  extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-                  child: Container(
-                    width: MediaQuery.of(context).size.width ,
-                    height: MediaQuery.of(context).size.height / 3,
-                    child: PageView(
-                                  controller: _pageController,
-                                  onPageChanged: (index) {
-                    changePage(index, animate: true);
-                                  },
-                                  children: [
-                                  _buildPage(context,  index: 0),
-                                  _buildPage(context,  index: 1),
-                                  _buildPage(context,  index: 2),
-                                  _buildPage(context,  index: 3),
-                                  ],
-                                ),
-                  ));
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: 300,
+      child: Expanded(
+                    child: Stack(
+                      children:[ Container(
+                        width: MediaQuery.of(context).size.width ,
+                        height: MediaQuery.of(context).size.height / 3,
+                        child: PageView(
+                          scrollDirection: Axis.horizontal,
+                                      controller: _pageController,
+                                      onPageChanged: (index) {
+                                        changePage(index, animate: true);
+                                      },
+                                      children: [
+                                      _buildPage(context,  index: 0),
+                                      _buildPage(context,  index: 1),
+                                      _buildPage(context,  index: 2),
+                                      _buildPage(context,  index: 3),
+                                      ],
+                                    ),
+                      ),
+                       Positioned(
+                        bottom: 15,
+                        left: 15,
+                        child: indicator()
+                      )
+                    ]
+                    )),
+    );
+  }
+Widget indicator(){
+     final double _dotRadius = 10.0;
+    return AnimatedBuilder(
+                animation:  _pageController,
+                builder: (context, snapshot) {
+                  return Container(
+                    height: _dotRadius * 2.0,
+                    width: double.infinity,
+                    child: CustomPaint(
+                      painter: PageIndicatorPainter(
+                        pageCount: 4,
+                        dotRadius: _dotRadius,
+                        dotOutlineThickness: _dotRadius / 10,
+                        spacing: _dotRadius * 2.5,
+                        scrollPosition: _pageController.position,
+                        dotFillColor: const Color(0x0F000000),
+                        dotOutlineColor: const Color(0x20000000),
+                        indicatorColor: const Color(0xFF444444),
+                      ),
+                    ),
+                  );
+        });
   }
 
   _buildPage(BuildContext context, {int? index} ) {
@@ -141,16 +180,16 @@ class CarouselView  extends StatelessWidget {
                     )
                   ),
 
-                Positioned(child: IconButton(icon:likeNo , onPressed: (){ },) ), //Button like -icon
-                Positioned(child: IconButton(icon:iconBagsNo , onPressed: (){ },) ), //Button trash -icon
-                Positioned(child: GestureDetector(child: Container(),)), //Button Shop now - Animation tapButton
-                Positioned(child: Text("Small text", style: GoogleFonts.lato(
-                          textStyle: TextStyle(color: Colors.blue,fontSize: 8, letterSpacing: .5),) )),
-                Container(height: 5, width: 50, child: Divider(height: 4,)), //Simle line from design
-                Positioned(child: Text("Big title", style: GoogleFonts.lato(
-                          textStyle: TextStyle(color: Colors.blue,fontSize: 20, letterSpacing: .5),) )) , //Title
-                Positioned(child: Text("Midle title", style: GoogleFonts.lato(
-                          textStyle: TextStyle(color: Colors.blue, fontSize: 14, letterSpacing: .5),) )),
+                Positioned(top: 50, right: 50, child: IconButton(icon:Icon(Icons.favorite,color: Colors.black,)  , onPressed: (){ },) ), //Button like -icon
+                Positioned(top: 50, right: 80,child: IconButton(icon: Icon(Icons.shopping_bag,color: Colors.black,) , onPressed: (){ },) ), //Button trash -icon
+                Positioned(bottom: 30, right: 30, child: GestureDetector(child: Container(width: 80, height: 35, color:Colors.black, child: Center(child: Text('Shop now', style: GoogleFonts.abel(color:Colors.white),)),),)), //Button Shop now - Animation tapButton
+                Positioned(top: 75, left: 40, child: Text("Small text", style: GoogleFonts.lato(
+                          textStyle: TextStyle(color: Colors.black,fontSize: 8, letterSpacing: .5),) )),
+                Positioned(top: 90, left: 40,child: Container(height: 5, width: 90, child: Divider(color: Colors.black, height: 5,))), //Simle line from design
+                Positioned(top: 100, left: 40,child: Text("Big title", style: GoogleFonts.lato(
+                          textStyle: TextStyle(color: Colors.black,fontSize: 20, letterSpacing: .5),) )) , //Title
+                Positioned(top: 140, left: 40,child: Text("Midle title", style: GoogleFonts.lato(
+                          textStyle: TextStyle(color: Colors.black, fontSize: 14, letterSpacing: .5),) )),
                 
               ],),
             ),

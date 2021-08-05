@@ -42,7 +42,7 @@ Clothes fashion app.
 
 ### Architecture
 <div>
-  <img src="image/adobe-xd.svg" height="40" />
+  <img src="Documentation/Readme_other/Screen_APPClothes/figma1.jpg" height="300" />
 </div>
 
 ### Screen

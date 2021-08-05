@@ -8,7 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 double indentationVertical(BuildContext context) => MediaQuery.of(context).size.height / 16 ;
 
 Color shimmerBaseColor = Colors.grey;
-Color shimmerHighlightColor = Colors.black;
+Color shimmerHighlightColor = Colors.grey.shade100;
 
 // Text
 var textH1 = GoogleFonts.lato(
@@ -35,6 +35,9 @@ var like = Image(image: AssetImage("assets/icon/like.png"));
 
 var likeNavBar = Image(image: AssetImage("assets/icon/like_nav.png"));     
 var filterLine = Image(image: AssetImage("assets/icon/filter_line.png")); 
+
+//Image profile
+var profileImage = Image(image: AssetImage("assets/carousel2.jpg")); 
 
 // var like = ImageIcon(
 //                AssetImage("assets/icon/like.png"),
