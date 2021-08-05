@@ -9,28 +9,35 @@ Clothes fashion app.
 
 
 ## Features 
-- API REST - Repository, Api, Moor, Cache
-- Moor
-- Carousel slide View
-- OHLC Graph 
-- Search 
-- Filter
-- Bookmark
-- Light / Dark Theme
-- Multi Language
-- Exchange Selection
-- Favorite Pair
+- [x] API REST - Repository, Api, Moor, Cache
+- [x] Moor
+- [x] Carousel slide View
+- [x] Search 
+- [x] Filter
+- [x] Bookmark
+- [ ] Light / Dark Theme
+- [ ] Animation button
+- [ ] Animation page route
+- [ ] Pay (Buy clothes)
+- [x] Responsive
+- [x] Splash screen
+- [ ] Shimmer
+- [ ] List loaded repository
 
 ## Structure
-- [ ] thread()
-- [x] loop()
-- [ ] ~~Array~~: Use `List`
+-  Clean architecture
+-  Provider
+-  Repository
+-  Interface
 
 ### Testing
-- Unit Testing (flutter_test)
-- Integration Testing (integration_test)
-- Mock Data (http_mock_adapter)
-- Github Actions (iOS & Android Integration Test)
+- [ ] Unit Testing (flutter_test)
+- [ ] Widget test
+- [ ] Mock test
+
+### Server
+-Flask (Python)
+
 
 
 ### Architecture
