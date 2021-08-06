@@ -37,7 +37,7 @@ var likeNavBar = Image(image: AssetImage("assets/icon/like_nav.png"));
 var filterLine = Image(image: AssetImage("assets/icon/filter_line.png")); 
 
 //Image profile
-var profileImage = Image(image: AssetImage("assets/carousel2.jpg")); 
+// var profileImage = Image(image: AssetImage("assets/carousel2.jpg")); 
 
 // var like = ImageIcon(
 //                AssetImage("assets/icon/like.png"),

@@ -55,7 +55,13 @@ class TrandScreen extends StatelessWidget {
         Container(
           padding: EdgeInsets.symmetric(horizontal: 15),
           child: Row(children: [
-              Text("Trand", style: GoogleFonts.abel(fontSize: 24),),
+              Text("Trand", 
+              maxLines: 1,
+              style: GoogleFonts.abel(
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                  ),
               Spacer(),
               IconButton(
                 icon: Icon(Icons.tune,color: Colors.black,),  //filter_list //tune
@@ -67,7 +73,9 @@ class TrandScreen extends StatelessWidget {
         Container( 
           padding: EdgeInsets.symmetric(horizontal: 15),  
           alignment: Alignment.centerLeft, 
-          child: Text("7340 result found", style: GoogleFonts.abel(color: Colors.black54, fontSize: 14),),
+          child: Text("7340 result found", 
+                 maxLines: 1,
+                style: GoogleFonts.abel(color: Colors.black54, fontSize: 14),),
         ),
 
         // GridView(gridDelegate: gridDelegate)

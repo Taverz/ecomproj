@@ -3,10 +3,22 @@
 
 import 'package:flutter/material.dart';
 
-class BagCacheBlock  {
+class BagCacheBlock 
+extends ChangeNotifier
+ {
 
+    bool _isLoading = true;
+    // BagCacheBlock(){
+    //   Future.delayed(Duration(seconds: 3) ).then((value) 
+    //     {
+    //       _isLoading= false;
+    //       //  notifyListeners();
+    //     }
+          
+    //   );
+    // }
   List<Item> _item = [];
-
+   bool get loading => _isLoading;
   List<Item> get items => _item;
 
   int get totalPrice =>
@@ -14,6 +26,17 @@ class BagCacheBlock  {
 
   set add(Item item){
     _item.add(item);
+ 
+  }
+
+   loaded(){
+     Future.delayed(Duration(seconds: 4) ).then((value) 
+        {
+          _isLoading= false;
+           notifyListeners();
+        }
+          
+      );
  
   }
 

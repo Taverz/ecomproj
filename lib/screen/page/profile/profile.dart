@@ -28,7 +28,9 @@ class Profile extends StatelessWidget{
        child: Container(
          child: Column(children: [
            SizedBox(height: 25,),
-           ClipOval( child: Image.asset("assets/carousel2.png") ,),
+           CircleAvatar(
+              radius: 32,
+              child: Image.asset("assets/carousel2.png") ,),
            SizedBox(height: 12,),
            Text("Name Profile", style: GoogleFonts.abel(fontSize:18)),
            SizedBox(height: 25,),

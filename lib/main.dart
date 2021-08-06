@@ -92,7 +92,7 @@ class MyAppS extends StatelessWidget {
     return 
     MultiProvider(
           providers: [
-            Provider<BagCacheBlock>(create: (context)=> BagCacheBlock() ),
+            ChangeNotifierProvider<BagCacheBlock>(create: (context)=> BagCacheBlock() ),
             Provider<DatabaseLocalBloc>(create: (context)=> DatabaseLocalBloc(), 
                   dispose: (context, db) => db.close() ),
             // Provider<DatabaseLocalBloc>(   // dispose: (context, db) => db.close(),
