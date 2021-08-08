@@ -1,10 +1,13 @@
 
+import 'dart:async';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecomproj/screen/widget/indicator_view_carousel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:ecomproj/app_config/Lib_Pref.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 //theme
 //TODO: сделать анимацию постоянной прокрутки по кругу carousel slider 
 
@@ -30,115 +33,100 @@ class Carousel extends StatefulWidget{
 }
 class Car extends State<Carousel> {
 
-final CarouselController _controller = CarouselController();
+  int activeindex = 0;
+
+// final CarouselController _controller = CarouselController();
 final PageController _pageController = PageController();
+ int _currentPage = 0;
+
+
+  @override
+  void initState(){
+    super.initState();
+
+    Timer.periodic(Duration(seconds: 2), (Timer timer) {
+      if (_currentPage < 2) {
+        _currentPage++;
+      } else {
+        _currentPage = 0;
+      }
+
+      _pageController.animateToPage(
+        _currentPage,
+        duration: Duration(milliseconds: 300),
+        curve: Curves.easeIn,
+      );
+    });
+    // _pageController.animateToPage(
+    //   page  , 
+    //   duration: Duration(seconds: 1), 
+    //   curve: curve
+    // )
+
+    
+  }
+
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 300,
+      // color: Colors.black,
       // width: MediaQuery.of(context).size.width,
      
-          child: Stack(
-            children:[  
-              Container(
-                width: MediaQuery.of(context).size.width ,
-                height: MediaQuery.of(context).size.height ,
-                child: CarouselSlider(
-                    options: CarouselOptions(
-                      // aspectRatio: 2.0,
-                      // enlargeCenterPage: true,
-                      scrollDirection: Axis.horizontal,
-                      autoPlay: true,
-                      autoPlayInterval: Duration(seconds: 5),
-                    ),
-                    items: lisNt
-                      .map((item) => Container(
-                            child: Center(child: Text(item.toString())),
-                            color: Colors.green,
-                          ))
-                      .toList(),
-                  ),
-              ),
-              Positioned(
-                bottom: 15,
-                left: 15,
-                child: indicator()
-              )
-            ]
+          child:  
+          // _carousel()
+          _paheView(context)
+
+          );
+  }
+
+  // Widget _carousel(){
+  //    return Stack(
+  //           children:[  
+  //             Container(
+  //               width: MediaQuery.of(context).size.width ,
+  //               height: MediaQuery.of(context).size.height ,
+  //               child: CarouselSlider(
+  //                   options: CarouselOptions(
+  //                     enableInfiniteScroll: false,
+  //                     // aspectRatio: 2.0,
+  //                     // enlargeCenterPage: true,
+  //                     scrollDirection: Axis.horizontal,
+  //                     autoPlay: true,
+  //                     autoPlayInterval: Duration(seconds: 5),
+  //                   ),
+  //                   items: lisNt
+  //                     .map((item) => _buildPage(context, index: item)
+  //                         // Container(
+  //                         //   child: Center(child: Text(item.toString())),
+  //                         //   color: Colors.green,
+  //                         // )
+  //                         )
+  //                     .toList(),
+  //                 ),
+  //             ),
+  //             // Positioned(
+  //             //   bottom: 15,
+  //             //   left: 15,
+  //             //   child: _buildIndicator(), //_indicator()
+  //             // )
+  //           ]
            
-          ));
-  }
-
-  Widget indicator(){
-     final double _dotRadius = 10.0;
-    return AnimatedBuilder(
-                animation:  _pageController,
-                builder: (context, snapshot) {
-                  return Container(
-                    height: _dotRadius * 2.0,
-                    width: double.infinity,
-                    child: CustomPaint(
-                      painter: PageIndicatorPainter(
-                        pageCount: 4,
-                        dotRadius: _dotRadius,
-                        dotOutlineThickness: _dotRadius / 10,
-                        spacing: _dotRadius * 2.5,
-                        scrollPosition: _pageController.position,
-                        dotFillColor: const Color(0x0F000000),
-                        dotOutlineColor: const Color(0x20000000),
-                        indicatorColor: const Color(0xFF444444),
-                      ),
-                    ),
-                  );
-        });
-  }
+  //         );
+  // }
 
 
-
-}
-
-
-class CarouselView  extends StatelessWidget {
-   CarouselView ({ Key? key }) : super(key: key);
-
-  int _indexSegmentSelected = 1;
-  PageController _pageController = PageController(initialPage: 1);
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      height: 300,
-      child: Expanded(
-                    child: Stack(
-                      children:[ Container(
-                        width: MediaQuery.of(context).size.width ,
-                        height: MediaQuery.of(context).size.height / 3,
-                        child: PageView(
-                          scrollDirection: Axis.horizontal,
-                                      controller: _pageController,
-                                      onPageChanged: (index) {
-                                        changePage(index, animate: true);
-                                      },
-                                      children: [
-                                      _buildPage(context,  index: 0),
-                                      _buildPage(context,  index: 1),
-                                      _buildPage(context,  index: 2),
-                                      _buildPage(context,  index: 3),
-                                      ],
-                                    ),
-                      ),
-                       Positioned(
-                        bottom: 15,
-                        left: 15,
-                        child: indicator()
-                      )
-                    ]
-                    )),
-    );
+  void dispose(){
+    super.dispose();
+    
+    _pageController.dispose();
+    
   }
-Widget indicator(){
+
+  Widget _indicator(){
      final double _dotRadius = 10.0;
     return AnimatedBuilder(
                 animation:  _pageController,
@@ -162,8 +150,9 @@ Widget indicator(){
         });
   }
 
-  _buildPage(BuildContext context, {int? index} ) {
-      return Container(
+
+  Widget _buildPage(BuildContext context, {int? index} ) {
+   return Container(
      alignment: Alignment.topCenter, //TODO()
         decoration: BoxDecoration(
           color: Theme.of(context).accentColor ,
@@ -175,27 +164,143 @@ Widget indicator(){
               aspectRatio: aspectRatio_CaruselView, //constant
               child: Stack(children: [
               
-              Positioned(child: CustomPaint(
-                    painter: PageTabIndicationPainter(pageController: _pageController),
+              // Positioned(child: CustomPaint(
+              //       painter: PageTabIndicationPainter(pageController: _pageController),
+              //       )
+              //     ),
+                Positioned(
+                  top:0, right: 0, bottom:0, left:0,  
+                  child: Container (
+                    
+                    child: Image.asset("assets/carousel3.jpg", fit: BoxFit.cover  ,)
+                  )
+                ),
+                Positioned(top: 40, right: 30, 
+                    child: IconButton(icon:Icon(Icons.favorite,color: isonButCcol,)  , 
+                        onPressed: (){ },) ), //Button like -icon
+                Positioned(top: 40, right: 60,
+                    child: IconButton(icon: Icon(Icons.shopping_bag,color: isonButCcol,) , 
+                        onPressed: (){ },) ), //Button trash -icon
+                Positioned(bottom: 30, right: 30, 
+                child: GestureDetector(
+                    child: Container(
+                      decoration:  decorationButton_Small,
+                      width: 80,
+                      height: 35, 
+                      // color:isonButCcol, 
+                      child: Center(
+                          child: Text('Shop now', style: GoogleFonts.abel(color:Colors.white),
+                        )
+                      ),
+                      ),
                     )
-                  ),
-
-                Positioned(top: 50, right: 50, child: IconButton(icon:Icon(Icons.favorite,color: Colors.black,)  , onPressed: (){ },) ), //Button like -icon
-                Positioned(top: 50, right: 80,child: IconButton(icon: Icon(Icons.shopping_bag,color: Colors.black,) , onPressed: (){ },) ), //Button trash -icon
-                Positioned(bottom: 30, right: 30, child: GestureDetector(child: Container(width: 80, height: 35, color:Colors.black, child: Center(child: Text('Shop now', style: GoogleFonts.abel(color:Colors.white),)),),)), //Button Shop now - Animation tapButton
-                Positioned(top: 75, left: 40, child: Text("Small text", style: GoogleFonts.lato(
-                          textStyle: TextStyle(color: Colors.black,fontSize: 8, letterSpacing: .5),) )),
-                Positioned(top: 90, left: 40,child: Container(height: 5, width: 90, child: Divider(color: Colors.black, height: 5,))), //Simle line from design
+                  ), //Button Shop now - Animation tapButton
+                Positioned(top: 70, left: 40, child: Text("Small text", style: GoogleFonts.lato(
+                          textStyle: TextStyle(color: textColor,fontSize: 18, letterSpacing: .5),) )),
+                  
+                Positioned(
+                    top: 90, left: 40,
+                    child: Container(
+                      height: 1.4, 
+                      width: 160, 
+                      color: textColor,
+                      // child: Divider(color: textColor, height: 14,)
+                    )
+                ), //Simle line from design
                 Positioned(top: 100, left: 40,child: Text("Big title", style: GoogleFonts.lato(
-                          textStyle: TextStyle(color: Colors.black,fontSize: 20, letterSpacing: .5),) )) , //Title
+                          textStyle: TextStyle(color: textColor,fontSize: 36, letterSpacing: .5),) )) , //Title
                 Positioned(top: 140, left: 40,child: Text("Midle title", style: GoogleFonts.lato(
-                          textStyle: TextStyle(color: Colors.black, fontSize: 14, letterSpacing: .5),) )),
+                          textStyle: TextStyle(color: textColor, fontSize: 24, letterSpacing: .5),) )),
                 
               ],),
             ),
             )
     );
   }
+
+var isonButCcol = Colors.black;
+var textColor  = Colors.white; 
+
+
+
+// }
+
+
+// class CarouselView  extends StatelessWidget {
+//    CarouselView ({ Key? key }) : super(key: key);
+
+//   int _indexSegmentSelected = 1;
+  // PageController _pageController = PageController(initialPage: 1);
+
+
+  
+  Widget _paheView(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      // height: 300,
+      child: Stack(
+        children:[ Container(
+          width: MediaQuery.of(context).size.width ,
+          height: MediaQuery.of(context).size.height / 3,
+          child: PageView.builder(
+            scrollDirection: Axis.horizontal,
+                        controller: _pageController,
+                        onPageChanged: _onPageChanged, 
+                        // (index) {
+                        //   changePage(index, animate: true);
+                        // },
+                        itemBuilder: (ctx, i) => _buildPage(context , index: i),
+                        itemCount: 3,
+                        // children: [
+                        // _buildPage(context,  index: 0),
+                        // _buildPage(context,  index: 1),
+                        // _buildPage(context,  index: 2),
+                        // _buildPage(context,  index: 3),
+                        // ],
+                        
+                      ),
+        ),
+        //  Positioned(
+        //   bottom: 15,
+        //   left: 15,
+        //   child: indicator()
+        // )
+      ]
+      ),
+    );
+  }
+
+  _onPageChanged(int index) {
+    setState(() {
+      _currentPage = index;
+    });
+  }
+
+// Widget indicator(){
+//      final double _dotRadius = 10.0;
+//     return AnimatedBuilder(
+//                 animation:  _pageController,
+//                 builder: (context, snapshot) {
+//                   return Container(
+//                     height: _dotRadius * 2.0,
+//                     width: double.infinity,
+//                     child: CustomPaint(
+//                       painter: PageIndicatorPainter(
+//                         pageCount: 4,
+//                         dotRadius: _dotRadius,
+//                         dotOutlineThickness: _dotRadius / 10,
+//                         spacing: _dotRadius * 2.5,
+//                         scrollPosition: _pageController.position,
+//                         dotFillColor: const Color(0x0F000000),
+//                         dotOutlineColor: const Color(0x20000000),
+//                         indicatorColor: const Color(0xFF444444),
+//                       ),
+//                     ),
+//                   );
+//         });
+//   }
+
+
 
   changePage(int index, {bool animate = true}) async {
     if (animate) {
@@ -208,12 +313,12 @@ Widget indicator(){
     // });
   }
 
+// }
+
+
+
+
 }
-
-
-
-
-
 
 
 

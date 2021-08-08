@@ -73,6 +73,8 @@ dependencies:
 
   ##
   carousel_slider: ^4.0.0
+  
+  
   pull_to_refresh: ^2.0.0
 
          
@@ -86,7 +88,7 @@ dev_dependencies:
   test:  
 
     
-
+  
 
   ##
   moor_generator: ^4.0.0
@@ -100,7 +102,7 @@ flutter:
   assets:
     - assets/splash.jpg
     - assets/carousel1.jpg
-    # - assets/carousel2.jpg
+    - assets/carousel2.jpg
     - assets/carousel3.jpg
 
     - assets/like.png

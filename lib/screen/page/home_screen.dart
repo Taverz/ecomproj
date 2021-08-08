@@ -14,89 +14,127 @@ import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+
+ const HomePage({ Key? key }) : super(key: key);
+
+@override
+_StateHome  createState()=> _StateHome();
+}
+class _StateHome extends State<HomePage>{  
 
 
-  const HomePage({ Key? key }) : super(key: key);
-
+  
 
 
   @override
   Widget build(BuildContext context) {
 List<String> listW= ["cot", "cat", "dog", "pat"];
-
-    return Scaffold(
+ final dataW = Provider.of<BagCacheBlock>(context);
+    return 
+    // Scaffold(
      
-      body: Container(
-        child: Column(children: [
+    //   body: 
+      Scaffold(
+        body: 
+        // SafeArea(
+        //   left: false,
+        //   top: false,
+        //   right: false,
       
-          // Shimmer.fromColors(
-          //   period: Duration(milliseconds: 1200),
-          //   child:
-            // CarouselView(),                
-          //   baseColor: shimmerBaseColor, 
-          //   highlightColor: shimmerHighlightColor 
-          // ),
-      
-          SizedBox(height: 16 ,),
-          Row(children:[
-            Container(height: 25, padding: EdgeInsets.only(left: 20), 
-                    child: Text("Trand", style: GoogleFonts.abel(
-                      fontSize: 24, 
-                      fontWeight: FontWeight.w700,
-                      ),)
-                    ),
-          ResponseiveW.isMobile(context)?
-                Spacer()
-                : SizedBox(width: 40 ,),
-          // _showAll(context),
-          ]),
-
-           Container(
-            padding: EdgeInsets.only(left: 10),
-            height:200,
-            child:  _listView(context)
-          ),
-          SizedBox(height:16 ,),
-          // _listView(context),
-           //List horizontal
-          // ListViewWidgets(),
-          SizedBox(height: 16,),
-          Row(children:[
-            Container(padding: EdgeInsets.only(left: 20), 
-                child:  Text("Trand", style: GoogleFonts.abel(
-                  fontSize: 24, 
-                   fontWeight: FontWeight.w700,
-                  ),)
-                ),
-            ResponseiveW.isMobile(context)?
-                Spacer()
-                : SizedBox(width: 40 ,),
-            //  _showAll(context),
-          ]),
-
-            // Shimmer.fromColors(
-          //   period: Duration(milliseconds: 1200),
-          //   child:
-                         
-          //   baseColor: shimmerBaseColor, 
-          //   highlightColor: shimmerHighlightColor 
-          // ),
-          SizedBox(height: 20,),
+          // child: 
           Container(
-            padding: EdgeInsets.only(left: 10),
-            height:200,
+            child: SingleChildScrollView(
+              child: Column(children: [
+                  
+                // Shimmer.fromColors(
+                //   period: Duration(milliseconds: 1200),
+                //   child:
+                  // CarouselView(),    
+                  // Container(
+                  //   // width: MediaQuery.of(context).size.width,
+                  //   child:
+                    dataW.loading ? 
+                      _carouselShimmer() : 
+                       Carousel(),
+                    //  Carousel(),
+                  // ),            
+                //   baseColor: shimmerBaseColor, 
+                //   highlightColor: shimmerHighlightColor 
+                // ),
+                  
+                // SizedBox(height: 16 ,),
+                Row(children:[
+                  Container(height: 25, padding: EdgeInsets.only(left: 20), 
+                          child: Text("Trand", style: GoogleFonts.abel(
+                            fontSize: 24, 
+                            fontWeight: FontWeight.w700,
+                            ),)
+                          ),
+                ResponseiveW.isMobile(context)?
+                      Spacer()
+                      : SizedBox(width: 40 ,),
+                _showAll(context),
+                ]),
+             SizedBox(height: 20,),
+                 Container(
+                  padding: EdgeInsets.only(left: 10),
+                  height:200,
+                  child:  _listView(context)
+                ),
+                SizedBox(height:16 ,),
+                // _listView(context),
+                 //List horizontal
+                // ListViewWidgets(),
+                SizedBox(height: 16,),
+                Row(children:[
+                  Container(padding: EdgeInsets.only(left: 20), 
+                      child:  Text("Trand", style: GoogleFonts.abel(
+                        fontSize: 24, 
+                         fontWeight: FontWeight.w700,
+                        ),)
+                      ),
+                  ResponseiveW.isMobile(context)?
+                      Spacer()
+                      : SizedBox(width: 40 ,),
+                   _showAll(context),
+                ]),
             
-            child:  _listView(context)
+                  // Shimmer.fromColors(
+                //   period: Duration(milliseconds: 1200),
+                //   child:
+                               
+                //   baseColor: shimmerBaseColor, 
+                //   highlightColor: shimmerHighlightColor 
+                // ),
+                SizedBox(height: 20,),
+                Container(
+                  padding: EdgeInsets.only(left: 10),
+                  height:200,
+                  
+                  child:  _listView(context)
+                ),
+              
+                // ListView
+              ],),
+            ),
           ),
-        
-          // ListView
-        ],),
-      )
-    );
+        // ),
+      );
+    // );
   }
 
 
+Widget _carouselShimmer(){
+  return 
+      Shimmer.fromColors(
+        period: Duration(milliseconds: 1200),
+        child:
+                    Carousel()   ,
+        baseColor: shimmerBaseColor, 
+        highlightColor: shimmerHighlightColor 
+      );
+}
 
 Widget _listView(BuildContext context){
   final data = Provider.of<BagCacheBlock>(context);
@@ -197,7 +235,11 @@ Widget _listShimmer(BuildContext context){
 
 Widget _listItem(BuildContext context){
     return Container(
-            color: Colors.grey.shade300,
+             decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15), 
+                color: Colors.grey.shade300 
+            ),
+           
             width: 160,
             // child:
             //   Shimmer.fromColors(
@@ -210,26 +252,31 @@ Widget _listItem(BuildContext context){
 
                 child: Column(children: [
                      Expanded(
-                        child: Container(
-                          padding:EdgeInsets.all(8),
-                          color: Colors.transparent,
-                          height: 120,
-                          child: Stack(children: [
-                          Container( 
-                            color: Colors.red,
-                            // child:Image.asset("assets/carousel3.jpg")
-                          ),
-                          Positioned(
-                            top: 0,
-                            right: 0,                        
-                            child: 
-                           IconButton(onPressed: (){
-                              //TODO: click change icon
-                      
-                            }, icon: Icon(Icons.favorite_outline ,color: Colors.black,)),
-                          ),
-                          
-                        ],)),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.all(Radius.circular(12)), 
+                          child: Container(
+                            padding:EdgeInsets.all(8),
+                            color: Colors.transparent,
+                            height: 120,
+                            child: Stack(children: [
+                            Container( 
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15), color: Colors.red  
+                              ),                           
+                              child:Image.asset("assets/carousel3.jpg", fit: BoxFit.cover, )
+                            ),
+                            Positioned(
+                              top: 0,
+                              right: 0,                        
+                              child: 
+                             IconButton(onPressed: (){
+                                //TODO: click change icon
+                                              
+                              }, icon: Icon(Icons.favorite_outline ,color: Colors.black,)),
+                            ),
+                            
+                          ],)),
+                        ),
                       ),
                       SizedBox(height: 10,),
                      Container(
@@ -252,7 +299,7 @@ Widget _listItem(BuildContext context){
                          Spacer(),
                           GestureDetector(
                             child: Container(
-                              color: Colors.black, 
+                              decoration: decorationButton_Small,
                               width: 40, 
                               height: 30,  
                                 child: Center(
@@ -277,7 +324,7 @@ Widget _showAll(BuildContext context){
     key: ValueKey("showAll"),
     child: Container( 
       padding: EdgeInsets.only(right: 10), 
-      child: Text("Show All", style: GoogleFonts.abel(fontSize: 14, color: Colors.blue) ), //Theme.of(context).textTheme.subtitle1 
+      child: Text("Show All", style: GoogleFonts.abel(fontSize: 14, color: Colors.blue.shade900) ), //Theme.of(context).textTheme.subtitle1 
     ),
     onTap: (){
       transitionBuilder(Container(color:Colors.green), context);

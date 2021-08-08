@@ -99,8 +99,12 @@ _streamList(){
                   ],),
                 ),
                 SizedBox(height: 7,),
-                Container( padding: EdgeInsets.only(right: padding1(context)), child: Text("Subscribe", style: Theme.of(context).textTheme.subtitle2 ),),
-                Container( padding: EdgeInsets.only(right: padding1(context)), child: Text("Price \$", style: Theme.of(context).textTheme.subtitle1 ),),
+                Container( 
+                  padding: EdgeInsets.only(right:16), 
+                  child: Text("Subscribe", style: Theme.of(context).textTheme.subtitle2 ),),
+                Container( 
+                  padding: EdgeInsets.only(right:16), 
+                  child: Text("Price \$", style: Theme.of(context).textTheme.subtitle1 ),),
             ]
 
 

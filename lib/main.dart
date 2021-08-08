@@ -37,49 +37,8 @@ void main() {
       .then((value) =>
         runApp(
               MyAppS()
-
-      //     MultiProvider(
-      //     providers: [
-      //        Provider<BlockBag>(create: (context)=> BlockBag() ),
-      //       Provider<DatabaseLocalBloc>(   // dispose: (context, db) => db.close(),
-      //        create: (context) => DatabaseLocalBloc() ), 
-      //     ],
-      //     builder: (context, _) {
-     
-      //     final themeProvider = Provider.of<ThemeProvider>(context);
-      //     return MaterialApp(
-      //         debugShowCheckedModeBanner: false,
-      //         themeMode: themeProvider.themeMode,
-      //         theme: MyThemes.lightTheme,
-      //         darkTheme: MyThemes.darkTheme,
-      //       title: 'E-Commerce BLoC + Provider',
-      //       initialRoute: getInitialRoute(),
-      //       routes: routes,
-      //     );
-      //   }
-      // ),
-
-    )
+              )
           
-            // MaterialApp(
-            //    debugShowCheckedModeBanner: false,
-            //   home: PageSplash(
-                      
-            //              futures: [
-            //                SharedPreferences.getInstance(),
-            //                 UserAccount.getPersistenceUser(),
-            //              ],
-            //   builder: (context) {
-            //     return 
-            //     MyApp(
-            //        user: data[1],
-            //     );
-            //   },
-              
-            //           ),
-            // )
-
-
         );
 
 }
@@ -112,7 +71,7 @@ class MyAppS extends StatelessWidget {
             title: 'E-Commerce BLoC + Provider',
             // initialRoute: getInitialRoute(),
             // routes: routes,
-            home: ButtonNavBar() //ButtonNavBar(),
+            home:   ButtonNavBar() //ButtonNavBar(),
           );
 
         }
@@ -121,79 +80,3 @@ class MyAppS extends StatelessWidget {
   }
 
 }
-
-// void main() {
-//   runApp(MyApp());
-// }
-
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     // Using MultiProvider is convenient when providing multiple objects.
-//     return MultiProvider(
-//       providers: [
-//         // In this sample app, CatalogModel never changes, so a simple Provider
-//         // is sufficient.
-//         Provider(create: (context) => CatalogModel()),
-//         // CartModel is implemented as a ChangeNotifier, which calls for the use
-//         // of ChangeNotifierProvider. Moreover, CartModel depends
-//         // on CatalogModel, so a ProxyProvider is needed.
-//         ChangeNotifierProxyProvider<CatalogModel, CartModel>(
-//           create: (context) => CartModel(),
-//           update: (context, catalog, cart) {
-//             if (cart == null) throw ArgumentError.notNull('cart');
-//             cart.catalog = catalog;
-//             return cart;
-//           },
-//         ),
-//       ],
-//       child: MaterialApp(
-//         title: 'Provider Demo',
-//         theme: appTheme,
-//         initialRoute: '/',
-//         routes: {
-//           '/': (context) => MyLogin(),
-//           '/catalog': (context) => MyCatalog(),
-//           '/cart': (context) => MyCart(),
-//         },
-//       ),
-//     );
-//   }
-// }
-
-
-
-
-// class MyApp extends StatelessWidget {
-
-  
-
-//   @override
-//   Widget build(BuildContext context) {
-
-//     return 
-//     MultiProvider(
-      
-//       providers: [
-//         Provider<AppDatabaseLocal>(    //dispose: (context, db) => db.close(),
-//             create: (context) => AppDatabaseLocal() ), // (_)
-//       ],
-//       child:
-//        ChangeNotifierProvider<ThemeProvider>(
-//         create: (context) => ThemeProvider(),
-//         builder: (context, _) {
-//           final themeProvider = Provider.of<ThemeProvider>(context);
-//           return MaterialApp(
-//               debugShowCheckedModeBanner: false,
-//               themeMode: themeProvider.themeMode,
-//               theme: MyThemes.lightTheme,
-//               darkTheme: MyThemes.darkTheme,
-//             title: 'E-Commerce BLoC + Provider',
-//             initialRoute: getInitialRoute(),
-//             routes: routes,
-//           );
-//         }
-//       ),
-//     );
-//   }
-// }

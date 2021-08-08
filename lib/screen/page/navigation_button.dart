@@ -110,10 +110,11 @@ class _ButtonNavBarState extends State<ButtonNavBar> {
         // onTap: _onItemTapped, 
       ),
       //Save state page Navigation button
-      body: IndexedStack(
-          index: _selectedIndex,
-          children: _pages,
-      )
+      body: _pages[_selectedIndex],
+      // IndexedStack(
+      //     index: _selectedIndex,
+      //     children: _pages,
+      // )
     );
   }
 

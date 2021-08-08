@@ -23,7 +23,7 @@ class Details extends StatelessWidget {
               // height: ,
               // child: ClipRRect(
               //   borderRadius: BorderRadius.only(bottomLeft:Radius.circular(radius_CaruselView)  , bottomRight:Radius.circular(radius_CaruselView) ) ,
-                child: Container(color: Colors.blue,), 
+                child: Container(color: Colors.red,), 
               // ),
               // child: Image(image: ,),
             ),
