@@ -49,7 +49,7 @@ Clothes fashion app.
 
 ### Screen
 
-| <img src="Documentation/Readme_other/Screen_APPClothes/screen1.jpg?raw=true" height="300"  width="160" />| <img src="Documentation/Readme_other/Screen_APPClothes/screen2.jpg" width="160"  height="300" /> | <img src="Documentation/Readme_other/Screen_APPClothes/screen3.jpg" height="300" /> | <img src="Documentation/Readme_other/Screen_APPClothes/screen4.jpg" height="300" />|
+| ![alt text](https://github.com/Taverz/ecomproj/blob/master/Documentation/readme_other/Screen_APPClothes/screen1.jpg)| ![alt text](https://github.com/Taverz/ecomproj/blob/master/Documentation/readme_other/Screen_APPClothes/screen2.jpg) | ![alt text](https://github.com/Taverz/ecomproj/blob/master/Documentation/readme_other/Screen_APPClothes/screen13.jpg) | ![alt text](https://github.com/Taverz/ecomproj/blob/master/Documentation/readme_other/Screen_APPClothes/screen14.jpg) | 
 <!-- | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | ![playlist_detail](https://boyan01.github.io/quietww/playlist_detail.png) | ![page_comment](https://boyan01.github.io/quiewwt/page_comment.png) |   ![playing](https://boyan01.github.io/quietww/playing.png)    |    ![search](https://boyan01.github.io/quietwww/search.jpg)     | -->
 
