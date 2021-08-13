@@ -72,7 +72,7 @@ dependencies:
   internet_connection_checker: ^0.0.1+2
 
   ##
-  carousel_slider: ^4.0.0
+  flutter_carousel_slider: ^1.0.8
   
   
   pull_to_refresh: ^2.0.0

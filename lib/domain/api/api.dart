@@ -56,7 +56,7 @@ class AppLocalData implements DataInterface{
   
     // CatalogDao dao = db.catalogDao;
 
-    var data = _dao.getAllClothes();
+   final   data = _dao.getAllClothes();
     db.close();
     var models  = (data as List)
           .map((modle) => ClothesModel.fromJson(modle))

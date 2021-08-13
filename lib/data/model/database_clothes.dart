@@ -5,15 +5,15 @@ import 'package:ecomproj/domain/entities/clothes_entity.dart';
                             //Entities
 class ClothesModel extends ClothesEntity {
 
-  int id;
-  String name;
-  String status;
-  String description;
-  String type;
-  String image;
-  List<String> color;
-  List<String> size;
-  DateTime created;
+ final  int id;
+ final  String name;
+ final  String status;
+ final  String description;
+ final  String type;
+ final  String image;
+ final  List<String> color;
+ final  List<String> size;
+ final  DateTime created;
 
   ClothesModel({  
     required this.id,  

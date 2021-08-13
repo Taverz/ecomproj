@@ -7,7 +7,7 @@ class BagCacheBlock
 extends ChangeNotifier
  {
 
-    bool _isLoading = true;
+   final  bool _isLoading = true;
     // BagCacheBlock(){
     //   Future.delayed(Duration(seconds: 3) ).then((value) 
     //     {
@@ -17,11 +17,11 @@ extends ChangeNotifier
           
     //   );
     // }
-  List<Item> _item = [];
+  final List<Item> _item = [];
    bool get loading => _isLoading;
   List<Item> get items => _item;
 
-  int get totalPrice =>
+   get totalPrice =>
       items.fold(0, (total, current) => total + current.price);
 
   set add(Item item){
