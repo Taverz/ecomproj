@@ -251,39 +251,39 @@ class Car extends State<Carousel> {
 //   int _indexSegmentSelected = 1;
   // PageController _pageController = PageController(initialPage: 1);
 
-  Widget _paheView(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      // height: 300,
-      child: Stack(children: [
-        Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height / 3,
-          child: PageView.builder(
-            scrollDirection: Axis.horizontal,
-            controller: _pageController,
-            // onPageChanged: _onPageChanged,
-            // (index) {
-            //   changePage(index, animate: true);
-            // },
-            itemBuilder: (ctx, i) => _buildPage(context, index: i),
-            itemCount: 3,
-            // children: [
-            // _buildPage(context,  index: 0),
-            // _buildPage(context,  index: 1),
-            // _buildPage(context,  index: 2),
-            // _buildPage(context,  index: 3),
-            // ],
-          ),
-        ),
-        //  Positioned(
-        //   bottom: 15,
-        //   left: 15,
-        //   child: indicator()
-        // )
-      ]),
-    );
-  }
+  // Widget _paheView(BuildContext context) {
+  //   return Container(
+  //     width: MediaQuery.of(context).size.width,
+  //     // height: 300,
+  //     child: Stack(children: [
+  //       Container(
+  //         width: MediaQuery.of(context).size.width,
+  //         height: MediaQuery.of(context).size.height / 3,
+  //         child: PageView.builder(
+  //           scrollDirection: Axis.horizontal,
+  //           controller: _pageController,
+  //           // onPageChanged: _onPageChanged,
+  //           // (index) {
+  //           //   changePage(index, animate: true);
+  //           // },
+  //           itemBuilder: (ctx, i) => _buildPage(context, index: i),
+  //           itemCount: 3,
+  //           // children: [
+  //           // _buildPage(context,  index: 0),
+  //           // _buildPage(context,  index: 1),
+  //           // _buildPage(context,  index: 2),
+  //           // _buildPage(context,  index: 3),
+  //           // ],
+  //         ),
+  //       ),
+  //       //  Positioned(
+  //       //   bottom: 15,
+  //       //   left: 15,
+  //       //   child: indicator()
+  //       // )
+  //     ]),
+  //   );
+  // }
 
   // _onPageChanged(int index) {
   //   setState(() {
@@ -292,15 +292,15 @@ class Car extends State<Carousel> {
   // }
 
 
-  changePage(int index, {bool animate = true}) async {
-    if (animate) {
-      await _pageController.animateToPage(index,
-          duration: Duration(milliseconds: 300), curve: Curves.decelerate);
-    }
-    // setState(() {
-    //   _indexSegmentSelected = index;
-    // });
-  }
+  // changePage(int index, {bool animate = true}) async {
+  //   if (animate) {
+  //     await _pageController.animateToPage(index,
+  //         duration: Duration(milliseconds: 300), curve: Curves.decelerate);
+  //   }
+  //   // setState(() {
+  //   //   _indexSegmentSelected = index;
+  //   // });
+  // }
 
 // }
 

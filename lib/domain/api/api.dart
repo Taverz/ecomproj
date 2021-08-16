@@ -1,5 +1,3 @@
-
-
 import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
@@ -27,52 +25,48 @@ abstract class DataInterface {
   Future<List<ClothesModel>> getTrand();
 }
 
-class AppLocalData implements DataInterface{
-
-
-  AppDatabase db;
-  late CatalogDao _dao ;
-  SharedPreferences sharedPreferences;
-  AppLocalData({required this.db,  required this.sharedPreferences ,}) {
+class AppLocalData implements DataInterface {
+ final AppDatabase db;
+  late CatalogDao _dao;
+  final SharedPreferences sharedPreferences;
+  AppLocalData({
+    required this.db,
+    required this.sharedPreferences,
+  }) {
     _dao = CatalogDao(db);
   }
 
   @override
-  Future<List<ClothesModel>> 
-   getConcreteNumberClothes(int number) async {
-    
+  Future<List<ClothesModel>> getConcreteNumberClothes(int number) async {
     // CatalogDao dao = db.catalogDao;
 
-    var data = await _dao.getAllClothes();
+    final data = await _dao.getAllClothes();
     db.close();
-     var models  = (data as List)
-          .map((modle) => ClothesModel.fromJson(modle))
-          .toList();
+    final models =
+        (data as List).map((modle) => ClothesModel.fromJson(modle)).toList();
     return models;
   }
 
   @override
-  Future<List<ClothesModel>> getTrand()  async {
-  
+  Future<List<ClothesModel>> getTrand() async {
     // CatalogDao dao = db.catalogDao;
 
-   final   data = _dao.getAllClothes();
+    final data = _dao.getAllClothes();
     db.close();
-    var models  = (data as List)
-          .map((modle) => ClothesModel.fromJson(modle))
-          .toList();
+    final models =
+        (data as List).map((modle) => ClothesModel.fromJson(modle)).toList();
     return models;
   }
 
-  String _CACHED_NUMBER_TRIVIA= "cahedlocal";
+  String _CACHED_NUMBER_TRIVIA = "cahedlocal";
 
   @override
   Future<List<ClothesModel>> getSharedCache() async {
-    final jsonString = sharedPreferences.getStringList(_CACHED_NUMBER_TRIVIA); 
+    final jsonString = sharedPreferences.getStringList(_CACHED_NUMBER_TRIVIA);
     if (jsonString != null) {
-      List<ClothesModel> listM  =[];
-      for ( var ver in jsonString){
-       listM.add(ClothesModel.fromJson(json.decode(ver)));
+      List<ClothesModel> listM = [];
+      for (var ver in jsonString) {
+        listM.add(ClothesModel.fromJson(json.decode(ver)));
       }
       return listM;
     } else {
@@ -87,31 +81,24 @@ class AppLocalData implements DataInterface{
       json.encode(triviaToCache.toJson()),
     );
   }
-
 }
 
 class RemoteDataAPI implements DataInterface {
+  final  String urlTrand = 'http://numbersapi.com/trand';
 
-  String urlTrand = 'http://numbersapi.com/trand';
-
-  
   Client clent;
 
   RemoteDataAPI({required this.clent});
-  
+
   @override
-  Future<List<ClothesModel>> getTrand() =>
-      _getFromUrl(urlTrand);
+  Future<List<ClothesModel>> getTrand() => _getFromUrl(urlTrand);
 
   @override
   Future<List<ClothesModel>> getConcreteNumberClothes(int number) =>
-        _getFromUrl('http://numbersapi.com/$number');     
-
-
+      _getFromUrl('http://numbersapi.com/$number');
 
   Future<List<ClothesModel>> _getFromUrl(String url) async {
-     
-     var urlP = Uri.parse(url); 
+    final  urlP = Uri.parse(url);
     final response = await clent.get(
       urlP,
       headers: {
@@ -121,18 +108,11 @@ class RemoteDataAPI implements DataInterface {
 
     if (response.statusCode == 200) {
       final personsR = json.decode(response.body);
-      return  (personsR['results'] as List)
+      return (personsR['results'] as List)
           .map((respon) => ClothesModel.fromJson(respon))
           .toList();
     } else {
       throw ServerException();
     }
   }
-
-     
-
-  
 }
-
-
-

@@ -22,7 +22,7 @@ class ButtonNavBar extends StatefulWidget {
 
 class _ButtonNavBarState extends State<ButtonNavBar> {
 
- int _selectedIndex = 0;
+  int _selectedIndex = 0;
 
   static const List<BottomNavigationBarItem> buttonNavItem = [
     BottomNavigationBarItem(
@@ -56,7 +56,7 @@ class _ButtonNavBarState extends State<ButtonNavBar> {
     ),
  ];
 
-  static  List<Widget> _pages = <Widget>[
+  static const List<Widget> _pages = <Widget>[
     //Home page
     HomePage(),
     //Buccmark page

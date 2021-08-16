@@ -24,7 +24,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class Profile extends StatefulWidget {  //StatelessWidget{
 
-
+    const Profile();
   @override
   _StateProfile createState() => _StateProfile();
 

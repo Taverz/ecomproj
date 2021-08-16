@@ -1,49 +1,37 @@
-
-
-
 import 'package:flutter/material.dart';
 
-class BagCacheBlock 
-extends ChangeNotifier
- {
+class BagCacheBlock extends ChangeNotifier {
+  
+  bool _isLoading = true;
 
-   final  bool _isLoading = true;
-    // BagCacheBlock(){
-    //   Future.delayed(Duration(seconds: 3) ).then((value) 
-    //     {
-    //       _isLoading= false;
-    //       //  notifyListeners();
-    //     }
-          
-    //   );
-    // }
-  final List<Item> _item = [];
-   bool get loading => _isLoading;
+  List<Item> _item = [];
+  bool get loading => _isLoading;
   List<Item> get items => _item;
 
-   get totalPrice =>
-      items.fold(0, (total, current) => total + current.price);
+  get totalPrice =>
+      items.fold(0, (int total, current) => total + current.price);
 
-  set add(Item item){
+  set add(Item item) {
     _item.add(item);
- 
+    notifyListeners();
   }
 
-   loaded(){
-     Future.delayed(Duration(seconds: 4) ).then((value) 
+  void delite(Item item) {
+    _item.remove(item);
+    notifyListeners();
+  }
+
+  loaded(){
+     Future.delayed(Duration(seconds: 4) ).then((value)
         {
           _isLoading= false;
            notifyListeners();
         }
-          
+
       );
- 
-  }
-
-  void remove(Item item){
-    _item.remove(item);
 
   }
+
 }
 
 @immutable

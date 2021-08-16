@@ -16,12 +16,10 @@ import 'package:provider/provider.dart';
 import 'package:provider/src/change_notifier_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-//TODO: navigation screen button bar
-//TODO: MyApp() создать и переделать
+
+//TODO: Splash screen
 
 void main() {
-
-
   //  debugDefaultTargetPlatformOverride = TargetPlatform.android;
   WidgetsFlutterBinding.ensureInitialized();
   // neteaseRepository = NeteaseRepository();
@@ -31,52 +29,37 @@ void main() {
   // });
   WidgetsFlutterBinding.ensureInitialized();
 
-  
-
- SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
-      .then((value) =>
-        runApp(
-              MyAppS()
-              )
-          
-        );
-
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((value) => runApp(MyAppS()));
 }
 
-
 class MyAppS extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-    return 
-    MultiProvider(
-          providers: [
-            ChangeNotifierProvider<BagCacheBlock>(create: (context)=> BagCacheBlock() ),
-            Provider<DatabaseLocalBloc>(create: (context)=> DatabaseLocalBloc(), 
-                  dispose: (context, db) => db.close() ),
-            // Provider<DatabaseLocalBloc>(   // dispose: (context, db) => db.close(),
-            //   create: (context) => DatabaseLocalBloc() ), 
-            ChangeNotifierProvider(create: (context) => ThemeProvider())
-          ],
-          builder: (context, _) {
-     
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider<BagCacheBlock>(
+              create: (context) => BagCacheBlock()),
+          Provider<DatabaseLocalBloc>(
+              create: (context) => DatabaseLocalBloc(),
+              dispose: (context, db) => db.close()),
+          // Provider<DatabaseLocalBloc>(   // dispose: (context, db) => db.close(),
+          //   create: (context) => DatabaseLocalBloc() ),
+          ChangeNotifierProvider(create: (context) => ThemeProvider())
+        ],
+        builder: (context, _) {
           final themeProvider = Provider.of<ThemeProvider>(context);
 
           return MaterialApp(
-            
               debugShowCheckedModeBanner: false,
               themeMode: themeProvider.themeMode,
               theme: MyThemes.lightTheme,
               darkTheme: MyThemes.darkTheme,
-            title: 'E-Commerce BLoC + Provider',
-            // initialRoute: getInitialRoute(),
-            // routes: routes,
-            home:   ButtonNavBar() //ButtonNavBar(),
-          );
-
-        }
-      );
-
+              title: 'E-Commerce BLoC + Provider',
+              // initialRoute: getInitialRoute(),
+              // routes: routes,
+              home: ButtonNavBar() //ButtonNavBar(),
+              );
+        });
   }
-
 }
